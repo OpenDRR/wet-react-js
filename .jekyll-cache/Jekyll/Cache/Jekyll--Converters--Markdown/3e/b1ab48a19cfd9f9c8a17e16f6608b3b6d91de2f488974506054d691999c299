@@ -1,0 +1,152 @@
+I"W<h1 id="canadaca-jekyll-theme">Canada.ca Jekyll theme</h1>
+
+<p>Il s’agit d’un paragraphe normal suivant un en-tête. GitHub est une plateforme d’hébergement de code pour le contrôle de version et la collaboration. Il vous permet, ainsi qu’à d’autres, de travailler ensemble sur des projets de n’importe où.</p>
+
+<p>Le texte peut être <strong>gras</strong>, <em>italique</em> ou <del>barré</del>.</p>
+
+<p><a href="./autre-page.html">Lien vers une autre page</a>.</p>
+
+<p>Il devrait y avoir un espace entre les paragraphes.</p>
+
+<p>Il devrait y avoir un espace entre les paragraphes. Nous vous recommandons d’inclure un fichier README ou un fichier contenant des informations sur votre projet.</p>
+
+<h2 id="en-tête-2">En-tête 2</h2>
+
+<blockquote>
+  <p>Il s’agit d’une citation suivant un en-tête.</p>
+
+  <p>Lorsque quelque chose est suffisamment important, vous le faites même si les chances ne sont pas en votre faveur.</p>
+</blockquote>
+
+<h3 id="en-tête-3">En-tête 3</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Code Javascript avec coloration syntaxique.</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">lang</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">dateformat</span><span class="p">.</span><span class="nx">i18n</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./lang/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">l</span><span class="p">)</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Code Ruby avec coloration syntaxique</span>
+<span class="no">GitHubPages</span><span class="o">::</span><span class="no">Dependencies</span><span class="p">.</span><span class="nf">gems</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">gem</span><span class="p">,</span> <span class="n">version</span><span class="o">|</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span><span class="p">(</span><span class="n">gem</span><span class="p">,</span> <span class="s2">"= </span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h4 id="en-tête-4">En-tête 4</h4>
+
+<ul>
+  <li>Il s’agit d’une liste non ordonnée suivant un en-tête.</li>
+  <li>Il s’agit d’une liste non ordonnée suivant un en-tête.</li>
+  <li>Il s’agit d’une liste non ordonnée suivant un en-tête.</li>
+</ul>
+
+<h5 id="en-tête-5">En-tête 5</h5>
+
+<ol>
+  <li>Il s’agit d’une liste ordonnée suivant un en-tête.</li>
+  <li>Il s’agit d’une liste ordonnée suivant un en-tête.</li>
+  <li>Il s’agit d’une liste ordonnée suivant un en-tête.</li>
+</ol>
+
+<h6 id="en-tête-6">En-tête 6</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">head1</th>
+      <th style="text-align: left">tête deux</th>
+      <th style="text-align: left">trois</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">ok</td>
+      <td style="text-align: left">bon poisson suédois</td>
+      <td style="text-align: left">sympa</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">en rupture de stock</td>
+      <td style="text-align: left">bon et plein</td>
+      <td style="text-align: left">sympa</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ok</td>
+      <td style="text-align: left">bon <code class="highlighter-rouge">oreos</code></td>
+      <td style="text-align: left">hmm</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ok</td>
+      <td style="text-align: left">bonne goutte <code class="highlighter-rouge">zoute</code></td>
+      <td style="text-align: left">miam</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="il-y-a-une-ligne-horizontale-en-dessous">Il y a une ligne horizontale en dessous.</h3>
+
+<hr />
+
+<h3 id="voici-une-liste-non-ordonnée">Voici une liste non ordonnée:</h3>
+
+<ul>
+  <li>Objet foo</li>
+  <li>Barre d’articles</li>
+  <li>Article baz</li>
+  <li>Article zip</li>
+</ul>
+
+<h3 id="et-une-liste-ordonnée">Et une liste ordonnée:</h3>
+
+<ol>
+  <li>Point un</li>
+  <li>Point deux</li>
+  <li>Point trois</li>
+  <li>Point quatre</li>
+</ol>
+
+<h3 id="et-une-liste-imbriquée">Et une liste imbriquée:</h3>
+
+<ul>
+  <li>élément de niveau 1
+   - objet de niveau 2
+   - objet de niveau 2
+     - objet de niveau 3
+     - objet de niveau 3</li>
+  <li>élément de niveau 1
+   - objet de niveau 2
+   - objet de niveau 2
+   - objet de niveau 2</li>
+  <li>élément de niveau 1
+   - objet de niveau 2
+   - objet de niveau 2</li>
+  <li>élément de niveau 1</li>
+</ul>
+
+<h3 id="petite-image">Petite image</h3>
+
+<p><img src="https://github.githubassets.com/images/icons/emoji/octocat.png" alt="Octocat" /></p>
+
+<h3 id="grande-image">Grande image</h3>
+
+<p><img src="https://guides.github.com/activities/hello-world/branching.png" alt="Branching" class="img-responsive" /></p>
+
+<h3 id="les-listes-de-définitions-peuvent-être-utilisées-avec-la-syntaxe-html">Les listes de définitions peuvent être utilisées avec la syntaxe HTML.</h3>
+
+<dl>
+<dt>Nom</dt>
+<dd>Godzilla</dd>
+<dt>Né</dt>
+<dd>1952</dd>
+<dt>Lieu de naissance</dt>
+<dd>Japon</dd>
+<dt>Couleur</dt>
+<dd>Vert</dd>
+</dl>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Les longs blocs de code sur une seule ligne ne doivent pas être bouclés. Ils doivent défiler horizontalement s'ils sont trop longs. Cette ligne doit être suffisamment longue pour le démontrer.
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Le dernier élément.
+</code></pre></div></div>
+:ET
