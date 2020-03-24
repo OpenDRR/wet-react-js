@@ -6,8 +6,8 @@ import Loader from './Components/Loader';
 import BarChart from './Components/BarChart'
 import Table from "./Components/Table";
 import './App.css'
-import './theme.css';
-import logo from './logo.svg';
+
+
 
 const position = [49.3,-123.07];
 
@@ -18,8 +18,8 @@ class App extends Component {
     map: React.createRef(),
     chartData: {
       margins: {top: 0, right: 50, bottom: 200, left: 50},
-      width: 10,
-      height: 5,
+      width: 800,
+      height: 600,
       dataSet: [],
     },
     loading: true,
@@ -130,15 +130,8 @@ class App extends Component {
       chartComponent = <BarChart data={chartData} />;
     }
     return (
-
-
       <div className="infoViz">
-	<div>
-	<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-	</header>
-	</div>
-        <Map center={position} zoom={2} ref={map}>
+        <Map center={position} zoom={12} ref={map}>
           <TileLayer
             url='https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -156,11 +149,8 @@ class App extends Component {
         </div>
         <div className="chart">
           {chartComponent}
-		  							<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;
-							<a class="btn btn-default" href="/map.html" role="button">Get Map</a>
         </div>
       </div>
-
     )
   }
 }

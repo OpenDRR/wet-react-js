@@ -1,0 +1,302 @@
+//import React from 'react';
+import React, { Component } from 'react'
+import logo from './logo.svg';
+//import WETtables from './WETtables';
+import './App.css';
+//import './App.css';
+import './theme.css';
+//
+
+import { Map, TileLayer, GeoJSON } from 'react-leaflet'
+import L from 'leaflet'
+import fetch from 'isomorphic-fetch'
+import Loader from './Components/Loader';
+import BarChart from './Components/BarChart'
+import Table from "./Components/Table";
+import ReactDOM from 'react-dom';
+//import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
+
+
+const position = [49.3,-123.07];
+
+
+function App() {
+
+	ReactDOM.render (
+	<DataTable />,
+	document.getElementById( 'root' )
+);
+  return (
+    <div className="App">
+      <header className="App-header">
+	    <div align="centre">
+        <img align="centre" src={logo} className="App-logo" alt="logo" />
+		</div>
+	
+      </header>
+    </div>
+  );
+}
+ 
+function DataTable() {
+  return (
+
+  			<div>
+			      <header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+	
+
+
+
+						</header>	
+				
+					<section>
+		<h2>React WET Integration Demo</h2>
+		<table className="wb-tables table">
+			<thead>
+				<tr>
+					<th>Rendering engine</th>
+					<th>Browser</th>
+					<th>Platform(s)</th>
+					<th>Engine version</th>
+					<th>CSS grade</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="gradeX">
+					<td>Trident</td>
+					<td>Internet
+						 Explorer 4.0</td>
+					<td>Win 95+</td>
+					<td class="center">4</td>
+					<td class="center">X</td>
+				</tr>
+				<tr class="gradeC">
+					<td>Trident</td>
+					<td>Internet
+						 Explorer 5.0</td>
+					<td>Win 95+</td>
+					<td class="center">5</td>
+					<td class="center">C</td>
+				</tr>
+				<tr class="gradeA">
+					<td>Trident</td>
+					<td>Internet
+						 Explorer 5.5</td>
+					<td>Win 95+</td>
+					<td class="center">5.5</td>
+					<td class="center">A</td>
+				</tr>
+				<tr class="gradeA">
+					<td>Trident</td>
+					<td>Internet
+						 Explorer 6</td>
+					<td>Win 98+</td>
+					<td class="center">6</td>
+					<td class="center">A</td>
+				</tr>
+				<tr class="gradeA">
+					<td>Trident</td>
+					<td>Internet Explorer 7</td>
+					<td>Win XP SP2+</td>
+					<td class="center">7</td>
+					<td class="center">A</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+						<p align="center">
+
+							<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;
+							<a class="btn btn-default" href="/map.html" role="button">Get Map</a>
+						</p>
+		<BrowserRouter>				
+		<Switch>
+				<Route exact path="/" render={() => (
+				   <Redirect to="/customerList"/>
+				)}/>
+				<Route exact path='/customerList' component={BarChart}/>
+		</Switch>
+		</BrowserRouter>	
+
+<Router>
+		<div>				
+		<nav>
+				
+				<Link to='/bar' component={BarChart}/>
+		</nav>
+		</div>
+</Router>
+
+		
+			</div>
+
+  );
+}
+
+function Appn() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+		<div id="reactDOM1">
+		ddddddddddddddddddddddddd
+		</div>
+        <p>
+          You go Edit <code>src/App.js</code> and save to reload.
+        </p>
+
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          But Can you Learn React?
+		  <Switch>
+				<Route exact path="/" render={() => (
+				   <Redirect to="/customerList"/>
+				)}/>
+				<Route exact path='/customerList' component={BarChart}/>
+		  </Switch>
+        </a>
+      </header>
+    </div>
+  );
+//}
+///////////////////////
+  function componentDidMount() {
+    // define some datasources
+    const dataSources = {
+      hazard: {
+        url: 'https://s3-us-west-2.amazonaws.com/data.info-viz.cctech.io/samples/dsra_sim6p8_cr2022_rlz_1_b0_scenario_hazard_agg_view.geojson',
+        property: 'sc_DP30',
+        detailsComponent: 'barchart',
+      },
+      hazardThreat: {
+        url: 'https://s3-us-west-2.amazonaws.com/data.info-viz.cctech.io/samples/dsra_sim6p8_cr2022_rlz_1_b0_scenario_hazard_threat_agg_view.geojson',
+        property: 'Eq_Bldgs',
+        detailsComponent: 'table',
+      },
+      damageState: {
+        url: 'https://s3-us-west-2.amazonaws.com/data.info-viz.cctech.io/samples/dsra_sim6p8_cr2022_rlz_1_b0_damage_state_agg_view.geojson',
+        property: 'Eq_Bldgs',
+        detailsComponent: 'barchart',
+      },
+    }
+    // define columns for table data
+    const columns = [
+        {
+          Header: 'Attributes',
+          columns: [
+            {
+              Header: "Attribute",
+              accessor: "label"
+            },
+            {
+              Header: "Value",
+              accessor: "value"
+            }
+          ]
+        },
+      ];
+    const currentDatasource = dataSources.hazardThreat; // for now change here the desired datasource
+    fetch(currentDatasource.url)
+      .then(res => res.json())
+      .then(json => this.setState(
+        { 
+          geoJson: json,
+          loading: false,
+          property: currentDatasource.property,
+          columns,
+          detailsComponent: currentDatasource.detailsComponent,
+        }
+      ));
+  }
+  
+  function bindFeatures (e)  {
+	  var layer = e.target;
+    layer.on({
+      click: this.featureClick
+    });
+  }
+
+  function featureClick (e)   {
+    const { chartData } = this.state
+    var layer = e.target;
+    const data = layer.feature.properties
+    const dataSet = Object.keys(data).map(label => ({ label, value: data[label] }) )
+    console.log('dataSet',dataSet);
+    dataSet.splice('id', 1)
+    this.setState({ chartData: {
+      ...chartData,
+      dataSet,
+    } })
+  }
+
+  function pointToLayer  (latlng)   {
+    const val = parseFloat(this.feature.properties['Eq_Bldgs'])
+    const heat = val*0.256
+    if(heat === 0) { return null }
+    const fillOpacity = val/20
+    const radius = 200 + (heat*2)
+    const r = parseInt(heat/2+128,10)
+    const g = parseInt(heat,10)
+    const b = parseInt(heat/4,10)
+    return L.circle(latlng, {fillColor: `rgb(${r},${g},${b})`, fill: true, fillOpacity, radius, stroke: false})
+  }
+  
+  function styles  ()   {
+    const { property } = this.state
+    if (Number(this.feature.properties[property]) === 0) return {color: "#ffffff", opacity: 0.1 };
+    if (Number(this.feature.properties[property]) > 0 && Number(this.feature.properties[property]) <= 100) return {color: "#58d0f8", weight: 1};
+    if (Number(this.feature.properties[property]) > 100 && Number(this.feature.properties[property]) <= 200) return {color: "#fdfda1", weight: 1};
+    if (Number(this.feature.properties[property]) > 200 && Number(this.feature.properties[property]) <= 400) return {color: "#f5ff2b", weight: 1};
+    if (Number(this.feature.properties[property]) > 400) return {color: "#f88348", weight: 1};
+  }
+  
+  function render() {
+    const { map, chartData, geoJson, columns } = this.state
+    
+    // loader while we wait fetching data
+    if (this.state.loading) return <Loader />;
+
+    // check which component we will use
+    let chartComponent;
+    if (this.state.detailsComponent === 'table') {
+      chartComponent = <Table columns={columns} data={chartData.dataSet} />;
+    }
+
+    if (this.state.detailsComponent === 'barchart') {
+      chartComponent = <BarChart data={chartData} />;
+    }
+    return (
+      <div className="infoViz">
+        <Map center={position} zoom={12} ref={map}>
+          <TileLayer
+            url='https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          />
+          <GeoJSON
+            data={geoJson}
+            onEachFeature={this.bindFeatures}
+            pointToLayer={this.pointToLayer} 
+            style={this.styles}
+          />
+        </Map>
+        <div className="narrative">
+          <h2>sc_CasNitL1</h2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div className="chart">
+          {chartComponent}
+        </div>
+      </div>
+    )
+  }
+}
+
+
+export default App;
