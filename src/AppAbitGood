@@ -10,7 +10,6 @@ import './theme.css';
 import logo from './logo.svg';
 
 
-
 class App extends Component {
   
   state = {
@@ -18,8 +17,8 @@ class App extends Component {
     map: React.createRef(),
     chartData: {
       margins: {top: 0, right: 50, bottom: 200, left: 50},
-      width: 0,
-      height: 0,
+     width: 30,
+      height: 20,
       dataSet: [],
     },
     loading: true,
@@ -115,16 +114,13 @@ class App extends Component {
         mapComponent =  <ChoroplethMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
         break
     }
-   mapComponent =  <ChoroplethMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
+    
     return (
       <div className="infoViz">
-	  			      <header className="App-header">
+	  		<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-	
-
-
-
-						</header>
+			</header>	
+				
         {mapComponent}
         <div className="narrative">
           <h2>{title}</h2>
@@ -132,17 +128,15 @@ class App extends Component {
         </div>
         <div className="chart">
           {chartComponent}
+		  <input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;
+		  <a class="btn btn-default" href="/map.html" role="button">Get Map</a>
         </div>
-		<div>
-								<p align="center">
-
-							<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;
-							<a class="btn btn-default" href="/map.html" role="button">Get Map</a>
-						</p>	
-		</div>
+		
       </div>
     )
   }
 }
+
+
 
 export default App;
