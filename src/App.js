@@ -143,11 +143,9 @@ class App extends Component {
 		</div>
         <div className="narrative">
 		  <iframe src='http://dev.info-viz.cctech.io.s3-website-us-west-2.amazonaws.com/?scenario=earthquake_affectedpeople&mapType=bubble&chart=barchart&property=sc_DP30&center=49.3,-123.07&title=Earthquake' width="100%" height="540" frameBorder="0">
-		  </iframe>
-  
+		  </iframe> 
         </div>
         <div className="chart" align="center">
-         
 		  		<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;			
         </div>
       </div>
