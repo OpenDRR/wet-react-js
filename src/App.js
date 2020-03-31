@@ -6,9 +6,6 @@ import BubbleMap from './Components/maps/BubbleMap'
 import SwipeMap from './Components/maps/SwipeMap'
 import Chart from './Components/charts/Chart'
 import { extractParams, getData } from './utils/services/dataSources';
-import './wet-boew-dist-4.0.34/css/theme.css';
-//import './wet-boew-dist-4.0.34/css/theme.min.css';
-import logo from './logo.svg';
 import './App.css'
 
 class App extends Component {
@@ -86,71 +83,16 @@ class App extends Component {
     }
     
     return (
-      <div>
-	  	<div>
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-			</header>
-		</div>
       <div className="infoViz">
-        {mapComponent}
+        {/* {mapComponent}
         <div className="narrative">
           <h2>{title}</h2>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
         <div className="chart">
           <Chart chart={chart} chartData={chartData} />
-        </div>
+        </div> */}
       </div>
-	  
-	  	  		  <div class="row">
-  <div class="col-xs-6 col-sm-3">
-  EarthQuake bachart  
-  
-  </div>
-  <div class="col-xs-6 col-sm-3">
-   Fire Barchart  
-	
-			
-          
-			
-  </div>
-
-  <div class="clearfix visible-xs"></div>
-
-  <div class="col-xs-6 col-sm-3">
-  Flood Barchart  
-     		  
-  </div>
-  <div class="col-xs-6 col-sm-3">
-  Tsunami Barchart  
-
-  </div>
-</div>
-	  		  <div class="row">
-  <div class="col-xs-6 col-sm-3">
-  <input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;	
-  
-  </div>
-  <div class="col-xs-6 col-sm-3">
- 
-	<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;	
-			
-  </div>
-
-  <div class="clearfix visible-xs"></div>
-
-  <div class="col-xs-6 col-sm-3">
- 
-     		  	<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;
-  </div>
-  <div class="col-xs-6 col-sm-3">
-  
-  <input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;	
-  </div>
-</div>
-
-	  </div>
     )
   }
 }
