@@ -1,47 +1,140 @@
-
-import './theme.css';
-
-
-import React from 'react';
+import React, { Component } from 'react'
+import Loader from './Components/Loader'
+import ChoroplethMap from './Components/maps/ChoroplethMap'
+import DensityMap from './Components/maps/DensityMap'
+import BubbleMap from './Components/maps/BubbleMap'
+import SwipeMap from './Components/maps/SwipeMap'
+import Chart from './Components/charts/Chart'
+import { extractParams, getData } from './utils/services/dataSources';
+import './wet-boew-dist-4.0.34/css/theme.css';
+import './wet-boew-dist-4.0.34/css/theme.min.css';
 import logo from './logo.svg';
+import './App.css'
+import './wet-boew-dist-4.0.34/css/ie8-theme.css'
+import './wet-boew-dist-4.0.34/css/ie8-theme.min.css'
 
-import './App.css';
-import ReactDOM from 'react-dom';
-import { Switch, Route, Redirect} from 'react-router-dom';
+class App extends Component {
+  
+  state = {
+    markerRadius: 30,
+    map: React.createRef(),
+    chartData: [],
+    loading: true,
+  }
+  
+  bindFeatures = (feature, layer) => {
+    layer.on({
+      click: this.featureClick
+    })
+  }
+  
+  featureClick = (e) => {
+
+    var layer = e.target
+    const data = layer.feature.properties
+    const dataSet = Object.keys(data).map(label => ({ label, value: Number(data[label]) }) )
+    dataSet.splice('id', 1)
+    this.setState({ chartData: dataSet })
+  }
+  
+  componentDidMount() {
+    // get and process url params
+    const url = window.location.search
+    const params = extractParams(url)
+    const { property, property2, chart, center, title, mapType } = params
+    // get data
+    getData(params)
+      .then(geoJson => 
+        this.setState(
+          { 
+            geoJson,
+            loading: false,
+            property,
+            property2,
+            chart,
+            mapType,
+            center,
+            title,
+          }
+        )      
+      )
+  }
+  
+  render() {
+    const { chartData, geoJson, center, property, property2, title, chart } = this.state
+    
+    // loader while fetching data
+
+    if (this.state.loading) return <Loader />
+
+    // set map component
+    let mapComponent
+    switch(this.state.mapType) {
+      case 'choroplet':
+        mapComponent =  <ChoroplethMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
+        break
+      case 'bubble':
+        mapComponent =  <BubbleMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
+        break
+      case 'density':
+        mapComponent =  <DensityMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
+        break
+      case 'swipe':
+        mapComponent =  <SwipeMap center={center} data={geoJson} property={property} property2={property2} bind={this.bindFeatures}/>
+        break
+      default:
+        mapComponent =  <ChoroplethMap center={center} data={geoJson} property={property} bind={this.bindFeatures}/>
+        break
+    }
+    
+    return (
+      <div>
+	  	<div>
+			<header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+			</header>
+		</div>
+      <div className="infoViz">
+        {mapComponent}
+        <div className="narrative">
+          <h2>{title}</h2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+
+      </div>
+	      <div className="chart" align="center">
+		  	<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;		
+			<input class="btn btn-default" type="submit" value="   Chart   "/>&nbsp;	
+            <input class="btn btn-default" type="submit" value="   Chart   "/>&nbsp;	
+			<a class="btn btn-default" href="/content-nositemenubc-en.html" role="button">Get Map</a>
+		  </div>
+		  
+		  <div class="row">
+  <div class="col-xs-6 col-sm-3">
+  EarthQuake bachart  
+  </div>
+  <div class="col-xs-6 col-sm-3">
+   Fire Barchart  
+  </div>
+
+  <div class="clearfix visible-xs"></div>
+
+  <div class="col-xs-6 col-sm-3">
+  Flood Barchart  
+  </div>
+  <div class="col-xs-6 col-sm-3">
+  Tsunami Barchart  
+  </div>
+</div>
+	  </div>
+	 
 
 
-function App() {
-	ReactDOM.render (
-	<DataTables />,
-	document.getElementById( 'root' )
-);
-  return (
-    <div className="App">
 
-    </div>
-  );
+	 
+
+    )
+  }
 }
 
-function DataTables() {
-  return (
-      <div className="infoViz">
-		<div>
-		<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-		</header>
-		</div>
-		<div>
-			&nbsp;
-		</div>
-        <div className="narrative">
-		  <iframe src='http://dev.info-viz.cctech.io.s3-website-us-west-2.amazonaws.com/?scenario=earthquake_affectedpeople&mapType=bubble&chart=barchart&property=sc_DP30&center=49.3,-123.07&title=Earthquake' width="100%" height="540" frameBorder="0">
-		  </iframe> 
-        </div>
-        <div className="chart" align="center">
-		  		<input class="btn btn-default" type="submit" value="   Submit   "/>&nbsp;			
-        </div>
-      </div>
-  );
-} 
-
-export default App;
+export default App

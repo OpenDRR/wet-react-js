@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-xs-12">
+   <a href="#">
+    <img src=".." class="img-responsive full-width" alt="">
+    <p class="well brdr-rds-0 well-sm mrgn-bttm-sm mrgn-rght-md mrgn-lft-md opct-90 pstn-bttm-xs pstn-rght-xs">...</p>
+   </a>
+  </div>
+</div>
+
