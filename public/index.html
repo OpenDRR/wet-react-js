@@ -17,6 +17,7 @@
   <!--[if gte IE 9 | !IE ]><!-->
   <link href="../theme-wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
   <link rel="stylesheet" href="../theme-wet-boew/css/theme.min.css">
+  <link rel="stylesheet" href="//unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
   <!--<![endif]-->
   <!--[if lt IE 9]>
       <link href="../theme-wet-boew/assets/favicon.ico" rel="shortcut icon" />
@@ -73,19 +74,12 @@
   </header>
   <main role="main" property="mainContentOfPage" class="container">
     <section>
-      <h2>RiskProfiler</h2>
+      <h2>React Components</h2>
       <div class="row">
-        <div class="col-md-8">
-          <img src="map.png" class="img-responsive"/>
+        <div class="col-md-12">
+          <div id="root"></div>
         </div>
-        <div class="col-md-4">
-          <div style="height: auto;"><p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vehicula gravida blandit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus suscipit, velit et lacinia dapibus, felis ipsum pretium nulla, sit amet consequat ligula sapien vel orci. </p></div>
-          <div style="height: auto;"></div><img src="chart.png" class="img-responsive"></div>
-        </div>
-      </div>
     </section>
-    <div id="root"></div>
-
   </main>
   <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
     <div class="container">
@@ -123,6 +117,7 @@
   <!--[if gte IE 9 | !IE ]><!-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="../wet-boew/js/wet-boew.min.js"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
   <!--<![endif]-->
   <!--[if lt IE 9]>
       <script src="../wet-boew/js/ie8-wet-boew2.min.js"></script>
