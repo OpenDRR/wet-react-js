@@ -1,3 +1,9 @@
+---------------------------------------------------------------------------------------------------
+
+**This repo is now archived. It was used to prototype a WET compliant React JS application.**
+
+---------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
